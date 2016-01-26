@@ -33,7 +33,7 @@ TabulaLogin.prototype.setup = function()
 	this.routes.post("/authenticate", function(req,res){
 		//console.log(req.body);
 		_this.authenticator(req.body, function(result){
-			if(result)
+			if(result.success)
 			{
 				var token = jwt.sign({user : req.body.name}, _this.app.get('secret'),{
 					expiresIn : _this.tokenexpiration
@@ -42,7 +42,8 @@ TabulaLogin.prototype.setup = function()
 				res.json({
 					success : true,
 					message : 'Login succesful!',
-					token : token
+					token : token,
+					params : result.params
 				});	
 			}
 			else
