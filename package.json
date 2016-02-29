@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/tabulaco/tabulalogin#readme",
   "dependencies": {
-    "body-parser": "^1.14.2",
-    "jsonwebtoken": "^5.4.1"
+    "body-parser": "^1.15.0",
+    "jsonwebtoken": "^5.7.0"
   }
 }
