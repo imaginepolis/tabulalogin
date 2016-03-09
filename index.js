@@ -31,7 +31,6 @@ TabulaLogin.prototype.setup = function()
 	
 	
 	this.routes.post("/authenticate", function(req,res){
-		//console.log(req.body);
 		_this.authenticator(req.body, function(result){
 			if(result.success)
 			{
@@ -64,7 +63,10 @@ TabulaLogin.prototype.setup = function()
 			jwt.verify(token, _this.app.get('secret'), function (err, decoded){
 				if(err)
 				{
-					return res.json({success : false, message : 'Failed to authenticate token'});
+					return res.status(403).send({
+						success : false, 
+						message : 'Failed to authenticate token'
+					});
 				}
 				else
 				{
